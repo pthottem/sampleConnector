@@ -1,10 +1,14 @@
 package com.external.sample;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import com.saviynt.ssm.abstractConnector.BaseConnectorSpecification;
 import com.saviynt.ssm.abstractConnector.ConfigDataVo;
+import com.saviynt.ssm.abstractConnector.RepositoryReconService;
 import com.saviynt.ssm.abstractConnector.SearchableObject;
 import com.saviynt.ssm.abstractConnector.exceptions.ConnectorException;
 import com.saviynt.ssm.abstractConnector.exceptions.InvalidAttributeValueException;
@@ -38,9 +42,20 @@ public class SampleConnector  extends BaseConnectorSpecification
 	}
 
 	@Override
-	public void reconsile(Map<String, Object> configData, Map<String, Object> filterData, String formatterClass)
-			throws ConnectorException {
-		// TODO Auto-generated method stub
+	public void reconsile(Map<String, Object> configData, Map<String, Object> dataFromEcm, String formatterClass) {
+		List<List<Map<String, Object>>> finalData = new ArrayList<List<Map<String, Object>>>();
+		List<Map<String, Object>> finalDataList = new ArrayList<Map<String, Object>>();
+		JSONObject jsonObject = new JSONObject(dataFromEcm.get("AccountReconJSON").toString());
+		Map<String, Object> filterData = jsonObject.toMap();
+		System.out.println(filterData);
+		finalData.add(finalDataList);
+		try {
+			RepositoryReconService.notify(finalData, null, formatterClass, dataFromEcm);
+		} catch (Exception e) {
+			 
+		}
+		
+		 
 		
 	}
 
