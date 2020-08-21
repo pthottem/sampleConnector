@@ -47,14 +47,21 @@ public class SampleConnector  extends BaseConnectorSpecification
 	@Override
 	public Boolean checkExisting(Map<String, Object> configData, Map<String, Object> data,
 			SearchableObject serachableObject) throws ConnectorException {
-		// TODO Auto-generated method stub
-		return null;
+		 
+		Boolean recordFound=false;
+		//Connect to target System With Config data 
+		//Check in target System 
+		//Return 
+		return recordFound;
 	}
 
 	@Override
 	public Boolean createAccount(Map<String, Object> configData, Map<String, Object> data) throws ConnectorException {
-		// TODO Auto-generated method stub
-		return null;
+		Boolean recordCreated=false;
+		//Connect to target System With Config data 
+		//Create in target System 
+		//Return 
+		return recordCreated;
 	}
 
 	@Override
